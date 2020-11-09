@@ -94,4 +94,25 @@ module.exports = [
     functionName: 'getAllAuth',
     roles:['admin','editor','reader'] // _ALL
   },
+  {
+    name: 'getAllRole',
+    url: '/getAllRole',
+    functionAddress: path.join(__dirname,'service/roleServices'),
+    functionName: 'getAllRole',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  {
+    name: 'addRoles',
+    url: '/addRoles',
+    functionAddress: path.join(__dirname,'service/roleServices'),
+    functionName: 'addRoles',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  {
+    name: 'removeRole',
+    url: '/removeRole',
+    functionAddress: path.join(__dirname,'service/roleServices'),
+    functionName: 'removeRole',
+    roles:['admin','editor','reader'] // _ALL
+  },
 ]
