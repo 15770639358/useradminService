@@ -81,6 +81,15 @@ let removeRoleAuth = (roleId) => {
   })
 }
 
+//根据category 查询用户id select * from userrole where roleId in (select id from role where category like '11%')
+let getUserIdByCategory = (category) => {
+  let sql = 'select id from userrole where roleId in (select id from role where category like ?)'
+  let sqlArr = [category]
+  return new Promise((resolve, reject) => {
+    dbconfig.getConnect(sql, sqlArr, callBack((data) =>{ resolve(data) }))
+  })
+}
+
 const callBack = (func) => {
   return (err, data) => {
     if (err) {
@@ -91,4 +100,4 @@ const callBack = (func) => {
     }
   }
 }
-module.exports = {getAllRoles, getAuthByRoleId, getAllAuth, getAllRole, getChildCategory, addCategory, removeRole, getAllcategory, removeRoleAuth}
+module.exports = {getAllRoles, getAuthByRoleId, getAllAuth, getAllRole, getChildCategory, addCategory, removeRole, getAllcategory, removeRoleAuth, getUserIdByCategory}

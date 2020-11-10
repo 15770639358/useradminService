@@ -78,6 +78,15 @@ let addRoles = async (req, res) => {
 //删除角色removeRole
 let removeRole = async (req,res) => {
   let category = req.body.category
+  //判断当前角色及其子角色是否有用户
+  let userIds = await roleDaos.getUserIdByCategory(category+'%')
+  if(userIds.length !== 0){
+    res.send({
+      code: 500,
+      message: '当前角色下有用户，不可删除'
+    })
+    return
+  }
   let ids = await roleDaos.getAllcategory(category+'%')
   for (const categ of ids) {
     await roleDaos.removeRoleAuth(categ.id)

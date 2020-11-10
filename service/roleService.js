@@ -98,10 +98,11 @@ const addAuth = (req, res) => {
 }
 
 //删除权限
-const removeAuth = (req, res) => {
+const removeAuth = async (req, res) => {
   let roleId = req.query.roleId
   let authId = req.query.authId
-  roledao.removeAuth(roleId,authId,(data) => {
+  let categorys = await roledao.getCategoryById(roleId)
+  roledao.removeAuth(categorys[0].category+'%',authId,(data) => {
     res.send({
       code:0,
       data:data

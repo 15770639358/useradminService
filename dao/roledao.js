@@ -14,10 +14,11 @@ let addAuth = (roleId, authId, func)  => {
   dbconfig.getConnect(sql, sqlArr, callBack(func))
 }
 
-//删除权限
-let removeAuth = (roleId, authId, func) => {
-  let sql = 'delete from roleauto where roleId = ? and authId = ?'
-  let sqlArr = [roleId, authId, func]
+//删除角色权限及其所有子角色响应的权限
+let removeAuth = (category, authId, func) => {
+  let sql = 'delete from roleauto where roleId in (select id from role where category like ?) and authId = ?'
+  // let sql = 'select id from role where category like ?'
+  let sqlArr = [category, authId, func]
   dbconfig.getConnect(sql, sqlArr, callBack(func))
 }
 
@@ -35,6 +36,15 @@ let getRolesByUsername = (username,func) => {
   dbconfig.getConnect(sql,sqlArr, callBack(func))
 }
 
+//根据id查询category
+let getCategoryById = (roleId) => {
+  let sql = 'select category from role where id=?'
+  let sqlArr = [roleId]
+  return new Promise((resolve, reject) => {
+    dbconfig.getConnect(sql, sqlArr, callBack((data) =>{ resolve(data) }))
+  })
+}
+
 const callBack = (func) => {
   return (err, data) => {
     if (err) {
@@ -45,4 +55,4 @@ const callBack = (func) => {
     }
   }
 }
-module.exports = {getAllAuth,getAuthInfo, addAuth, removeAuth, getRolesByUsername}
+module.exports = {getAllAuth,getAuthInfo, addAuth, removeAuth, getRolesByUsername, getCategoryById}
