@@ -1,6 +1,6 @@
 const userdao = require('../dao/userdao')
 const jwt = require('jsonwebtoken')
-
+const {filterChild} = require('./roleServices')
 //登录
 const loginService =  (req, res) => {
     let username = req.body.username
@@ -68,12 +68,15 @@ const getAllInfo = (req,res) => {
           user.username = userInfo.username
           data.forEach(userInfo2 => {
             if(userInfo2.id === userInfo.id){
-              user.roles.push({id: userInfo2.roleId,name: userInfo2.rolename})
+              user.roles.push({id: userInfo2.roleId,name: userInfo2.rolename,category:userInfo2.category})
             }
           })
           ids.push(userInfo.id)
           users.push(user)
         }
+        users.forEach(user => {
+          // user.roles = filterChild(user.roles,4)
+        })
       })
         res.send({
             code: 0,

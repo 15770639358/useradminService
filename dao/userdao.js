@@ -18,7 +18,7 @@ let getUserInfoById = (id, func) => {
 
 //查询所有用户信息
 let getAllUserInfo = (func) => {
-    let sql = 'select u.*,ur.roleId,r.rolename from user u ,userrole ur, role r where u.id = ur.userId and ur.roleId = r.id'
+    let sql = 'select u.*, r.id roleId, r.rolename, r.category from user u LEFT JOIN userrole ur on u.id = ur.userId LEFT JOIN role r on  ur.roleId = r.id'
     let sqlArr = []
     dbconfig.getConnect(sql, sqlArr ,callBack(func))
 }

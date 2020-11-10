@@ -115,4 +115,51 @@ module.exports = [
     functionName: 'removeRole',
     roles:['admin','editor','reader'] // _ALL
   },
+  //getAllUser
+  {
+    name: 'getAllUser',
+    url: '/getAllUser',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'getAllUser',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  //removeUserRole
+  {
+    name: 'removeUserRole',
+    url: '/removeUserRole',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'removeRole',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  {
+    name: 'addUserRoles',
+    url: '/addUserRoles',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'addRole',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  //getUserRole
+  {
+    name: 'getUserRole',
+    url: '/getUserRole',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'getUserRole',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  //getCountUser
+  {
+    name: 'getCountUser',
+    url: '/getCountUser',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'getCountUser',
+    roles:['admin','editor','reader'] // _ALL
+  },
+  //addUser
+  {
+    name: 'addUser',
+    url: '/addUser',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'addUser',
+    roles:['admin','editor','reader'] // _ALL
+  }
 ]

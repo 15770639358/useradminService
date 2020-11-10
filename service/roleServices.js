@@ -151,4 +151,4 @@ let authHasChild = (roles, category, limit) => {
     return roles.some((role) => {return (role.category+'').length === limit + 2 && (role.category+'').substring(0,limit) === (category+'').substring(0,limit)})
 }
 
-module.exports = {getAllRoles, getAuthByRoleId, getAllAuth, getAllRole, addRoles, removeRole}
+module.exports = {getAllRoles, getAuthByRoleId, getAllAuth, getAllRole, addRoles, removeRole, fromtData}
