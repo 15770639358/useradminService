@@ -51,6 +51,15 @@ let addUser = (username) => {
   })
 }
 
+//修改密码
+let updatePassword = (userId, password) => {
+  let sql = 'update user set password = ? where id = ?'
+  let sqlArr = [password, userId]
+  return new Promise((resolve, reject) => {
+    dbconfig.getConnect(sql, sqlArr, callBack((data) =>{ resolve(data) }))
+  })
+}
+
 
 const callBack = (func) => {
   return (err, data) => {
@@ -62,4 +71,4 @@ const callBack = (func) => {
     }
   }
 }
-module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser}
+module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser, updatePassword}

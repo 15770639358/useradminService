@@ -55,5 +55,14 @@ let addUser = async (req,res) => {
     data: data
   })
 }
-
-module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser}
+//updatePassword
+let updatePassword = async (req,res) => {
+  let userId = req.body.userId
+  let password = req.body.password
+  let data = await  userDaos.updatePassword(userId,password)
+  res.send({
+    code: 0,
+    data: data
+  })
+}
+module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser, updatePassword}

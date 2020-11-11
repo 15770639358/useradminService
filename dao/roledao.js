@@ -14,11 +14,12 @@ let addAuth = (roleId, authId, func)  => {
   dbconfig.getConnect(sql, sqlArr, callBack(func))
 }
 
-//删除角色权限及其所有子角色响应的权限
-let removeAuth = (category, authId, func) => {
-  let sql = 'delete from roleauto where roleId in (select id from role where category like ?) and authId = ?'
-  // let sql = 'select id from role where category like ?'
-  let sqlArr = [category, authId, func]
+//删除角色权限
+let removeAuth = (roleId, authId, func) => {
+  //删除角色权限及其所有子角色响应的权限
+  // let sql = 'delete from roleauto where roleId in (select id from role where category like ?) and authId = ?'
+  let sql = 'delete from roleauto where roleId = ? and authId = ?'
+  let sqlArr = [roleId, authId]
   dbconfig.getConnect(sql, sqlArr, callBack(func))
 }
 

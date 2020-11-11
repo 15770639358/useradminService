@@ -161,5 +161,13 @@ module.exports = [
     functionAddress: path.join(__dirname,'service/userServices'),
     functionName: 'addUser',
     roles:['admin','editor','reader'] // _ALL
+  },
+  //updatePassword
+  {
+    name: 'updatePassword',
+    url: '/updatePassword',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'updatePassword',
+    roles:['admin','editor','reader'] // _ALL
   }
 ]
