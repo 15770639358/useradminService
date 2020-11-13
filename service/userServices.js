@@ -65,4 +65,15 @@ let updatePassword = async (req,res) => {
     data: data
   })
 }
-module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser, updatePassword}
+
+let removeUserAndRole = async (req,res) => {
+  let userId = req.body.userId
+  let data = await  userDaos.removeUserAllRole(userId)
+  let data1 = await userDaos.delUser(userId)
+  res.send({
+    code: 0,
+    data: data
+  })
+}
+
+module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser, updatePassword, removeUserAndRole}

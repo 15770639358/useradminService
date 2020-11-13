@@ -169,5 +169,13 @@ module.exports = [
     functionAddress: path.join(__dirname,'service/userServices'),
     functionName: 'updatePassword',
     roles:['admin','editor','reader'] // _ALL
+  },
+  //removeUserAndRole
+  {
+    name: 'removeUserAndRole',
+    url: '/removeUserAndRole',
+    functionAddress: path.join(__dirname,'service/userServices'),
+    functionName: 'removeUserAndRole',
+    roles:['admin','editor','reader'] // _ALL
   }
 ]

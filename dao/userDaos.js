@@ -45,7 +45,7 @@ let  getCountUser = (username) => {
 //添加用户
 let addUser = (username) => {
   let sql = 'insert into user(username, password) values (?,?)'
-  let sqlArr = [username,123456]
+  let sqlArr = [username,'e10adc3949ba59abbe56e057f20f883e']
   return new Promise((resolve, reject) => {
     dbconfig.getConnect(sql, sqlArr, callBack((data) =>{ resolve(data) }))
   })
@@ -60,6 +60,23 @@ let updatePassword = (userId, password) => {
   })
 }
 
+//删除用户其所有角色
+let removeUserAllRole = (userId) => {
+  let sql = 'delete from userrole where userId = ?'
+  let sqlArr = [userId]
+  return new Promise((resolve, reject) => {
+    dbconfig.getConnect(sql, sqlArr, callBack((data) =>{ resolve(data) }))
+  })
+}
+
+//删除用户
+let delUser = (userId) => {
+  let sql = 'delete from user where id = ?'
+  let sqlArr = [userId]
+  return new Promise((resolve, reject) => {
+    dbconfig.getConnect(sql, sqlArr, callBack((data) =>{ resolve(data) }))
+  })
+}
 
 const callBack = (func) => {
   return (err, data) => {
@@ -71,4 +88,4 @@ const callBack = (func) => {
     }
   }
 }
-module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser, updatePassword}
+module.exports = {getAllUser,removeRole, addRole, getUserRole, getCountUser, addUser, updatePassword,removeUserAllRole, delUser}
