@@ -29,13 +29,13 @@ module.exports = [
     functionName: 'getRoleIdByUserId',
     roles:['admin','editor','reader']
   },
-  {
-    name: 'removeUserRole',
-    url: '/removeUserRole',
-    functionAddress: path.join(__dirname,'service/roleService'),
-    functionName: 'removeUserRole',
-    roles:['admin','editor']
-  },
+  // {
+  //   name: 'removeUserRole',
+  //   url: '/removeUserRole',
+  //   functionAddress: path.join(__dirname,'service/roleService'),
+  //   functionName: 'removeUserRole',
+  //   roles:['admin','editor']
+  // },
   {
     name: 'addUserRole',
     url: '/addUserRole',
